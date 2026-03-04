@@ -23,8 +23,13 @@ app.UseExceptionHandler();
 
 if (app.Environment.IsDevelopment())
 {
+    app.UseDeveloperExceptionPage();
     app.UseSwagger();
     app.UseSwaggerUI();
+}
+else
+{
+    app.UseExceptionHandler();
 }
 
 app.UseHttpsRedirection();
