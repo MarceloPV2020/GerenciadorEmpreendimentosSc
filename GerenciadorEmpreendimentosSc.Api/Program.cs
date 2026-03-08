@@ -1,4 +1,6 @@
+using FluentValidation;
 using GerenciadorEmpreendimentosSc.Api.Data;
+using GerenciadorEmpreendimentosSc.Api.Dtos;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,19 +19,16 @@ builder.Services.AddDbContext<AppDbContext>(opt =>
     opt.UseSqlite(cs);
 });
 
+builder.Services.AddValidatorsFromAssemblyContaining<EmpreendimentoCreateDto.Validator>();
+
 var app = builder.Build();
 
 app.UseExceptionHandler();
 
 if (app.Environment.IsDevelopment())
 {
-    app.UseDeveloperExceptionPage();
     app.UseSwagger();
     app.UseSwaggerUI();
-}
-else
-{
-    app.UseExceptionHandler();
 }
 
 app.UseHttpsRedirection();
