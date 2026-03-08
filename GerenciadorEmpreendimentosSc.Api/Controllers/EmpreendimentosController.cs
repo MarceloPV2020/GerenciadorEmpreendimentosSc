@@ -17,7 +17,7 @@ public sealed class EmpreendimentosController : ControllerBase
     [HttpPost]
     [ProducesResponseType(typeof(EmpreendimentoReadDto), StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<EmpreendimentoReadDto>> Create([FromServices] EmpreendimentoCreateDto.Validator validator, [FromBody] EmpreendimentoCreateDto dto, CancellationToken cancellationToken)
+    public async Task<ActionResult<EmpreendimentoReadDto>> Inserir([FromServices] EmpreendimentoCreateDto.Validator validator, [FromBody] EmpreendimentoCreateDto dto, CancellationToken cancellationToken)
     {
         var resultadoValidacao = await validator.ValidateAsync(dto, cancellationToken);
         if (!resultadoValidacao.IsValid)
@@ -47,7 +47,7 @@ public sealed class EmpreendimentosController : ControllerBase
     [ProducesResponseType(typeof(EmpreendimentoReadDto), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<EmpreendimentoReadDto>> Update(Guid id, [FromServices] EmpreendimentoUpdateDto.Validator validator, [FromBody] EmpreendimentoUpdateDto dto, CancellationToken cancellationToken)
+    public async Task<ActionResult<EmpreendimentoReadDto>> Editar(Guid id, [FromServices] EmpreendimentoUpdateDto.Validator validator, [FromBody] EmpreendimentoUpdateDto dto, CancellationToken cancellationToken)
     {
         var resultadoValidacao = await validator.ValidateAsync(dto, cancellationToken);
         if (!resultadoValidacao.IsValid)
@@ -80,7 +80,7 @@ public sealed class EmpreendimentosController : ControllerBase
     [HttpDelete("{id:guid}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> Delete(Guid id, CancellationToken cancellationToken)
+    public async Task<IActionResult> Excluir(Guid id, CancellationToken cancellationToken)
     {
         var empreendimento = await _context.Empreendimentos.FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
         if (empreendimento is null)
