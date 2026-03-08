@@ -40,7 +40,7 @@ public sealed class EmpreendimentosController : ControllerBase
         _context.Empreendimentos.Add(empreendimento);
         await _context.SaveChangesAsync(cancellationToken);
 
-        return CreatedAtAction(nameof(GetById), new { id = empreendimento.Id }, CopiarParaDto(empreendimento));
+        return CreatedAtAction(nameof(SelecionarPorId), new { id = empreendimento.Id }, CopiarParaDto(empreendimento));
     }
 
     [HttpPut("{id:guid}")]
@@ -130,7 +130,7 @@ public sealed class EmpreendimentosController : ControllerBase
     [HttpGet("{id:guid}")]
     [ProducesResponseType(typeof(EmpreendimentoReadDto), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<EmpreendimentoReadDto>> GetById(Guid id, CancellationToken ct)
+    public async Task<ActionResult<EmpreendimentoReadDto>> SelecionarPorId(Guid id, CancellationToken ct)
     {
         var empreendimento = await _context.Empreendimentos.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id, ct);
         if (empreendimento is null)
