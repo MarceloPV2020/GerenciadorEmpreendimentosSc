@@ -2,43 +2,57 @@
 
 ## Descrição da Solução
 
-Este projeto consiste em uma **API REST para gerenciamento de empreendimentos localizados no estado de Santa Catarina**. A aplicação permite realizar operações completas de cadastro, consulta, atualização e remoção de registros relacionados a empreendimentos e seus respectivos responsáveis.
+Este projeto consiste em uma API REST desenvolvida para o gerenciamento
+de informações sobre empreendimentos localizados no estado de Santa
+Catarina.
 
-O sistema foi desenvolvido como solução para o **Desafio Prático de Software da trilha IA para DEVs**, promovido pelo **Programa SCTEC – SENAI/SC**.
+A aplicação permite realizar operações completas de cadastro, consulta,
+atualização e remoção de empreendimentos e de seus respectivos
+responsáveis, organizando os dados de forma estruturada.
 
-A aplicação funciona como um protótipo de sistema que organiza informações sobre empreendimentos catarinenses, permitindo futuramente integração com interfaces de usuário ou outros serviços.
+O sistema foi desenvolvido como solução para o desafio prático de
+software do processo seletivo da trilha **IA para DEVs**, promovido pelo
+**Programa SCTEC - SENAI/SC**.
 
-A API implementa operações de CRUD (Create, Read, Update e Delete) para gerenciamento dos dados, utilizando boas práticas de desenvolvimento e separação de responsabilidades entre as camadas da aplicação.
+A proposta da aplicação é servir como um protótipo de sistema capaz de
+organizar dados relacionados ao empreendedorismo catarinense, podendo
+futuramente ser integrado a outras aplicações ou interfaces de usuário.
 
----
+------------------------------------------------------------------------
 
 # Tecnologias Utilizadas
 
-A solução foi desenvolvida utilizando tecnologias modernas do ecossistema .NET:
+A solução foi desenvolvida utilizando tecnologias modernas do
+ecossistema .NET.
 
-- **.NET 9**
-- **ASP.NET Core Web API**
-- **Entity Framework Core**
-- **SQLite**
-- **FluentValidation**
-- **Swagger / OpenAPI**
+-   .NET 9
+-   ASP.NET Core Web API
+-   Entity Framework Core
+-   SQLite
+-   FluentValidation
+-   Swagger / OpenAPI
 
-Essas tecnologias permitem desenvolvimento rápido de APIs, boa organização de código e fácil manutenção da aplicação.
+Essas tecnologias foram escolhidas por oferecerem boa organização de
+código, facilidade de manutenção e rápida criação de APIs REST.
 
----
+------------------------------------------------------------------------
 
-# Arquitetura da Aplicação
+# Estrutura Geral do Projeto
 
-A aplicação segue uma arquitetura simples baseada em separação de responsabilidades entre camadas.
+O projeto segue uma estrutura organizada em camadas:
 
-```mermaid
-flowchart TD
-    Client[Cliente HTTP] --> Controller[Controller API]
-    Controller --> DTO[DTOs]
-    Controller --> Validation[FluentValidation]
-    Controller --> Model[Modelos de Domínio]
+GerenciadorEmpreendimentosSc.Api
 
-## Descrição das camadas
+Controllers → Endpoints da API\
+Models → Entidades de domínio\
+Dtos → Objetos de transferência de dados\
+Data → DbContext e acesso ao banco\
+Migrations → Controle de versionamento do banco\
+Program.cs → Configuração da aplicação
+
+Essa separação facilita manutenção, legibilidade e evolução do sistema.
+
+### Descrição das camadas
 
 Controllers\
 Responsáveis por expor os endpoints da API e receber as requisições
@@ -99,7 +113,7 @@ Para executar o projeto é necessário possuir:
 
 ## Clonar o repositório
 
-git clone https://github.com/MarceloPV2020/GerenciadorEmpreendimentosSc.git
+git clone
 
 ## Acessar o diretório do projeto
 
@@ -141,7 +155,7 @@ aplicação caso ainda não exista.
 
 Apresentação da solução desenvolvida:
 
-LINK????????????????????????????????????????????????????????????????????????????
+??????????????????????????????????????????LINK_DO_VIDEO
 
 No vídeo são apresentados:
 
@@ -161,5 +175,3 @@ empreendimentos.
 A arquitetura adotada permite fácil manutenção e evolução futura da
 aplicação, possibilitando a integração com interfaces de usuário ou
 outros serviços.
-    Model --> DbContext[AppDbContext - EF Core]
-    DbContext --> Database[Banco de Dados SQLite]
