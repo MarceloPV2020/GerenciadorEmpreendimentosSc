@@ -1,5 +1,3 @@
-# Gerenciador de Empreendimentos de Santa Catarina
-
 ## Descrição da Solução
 
 Este projeto consiste em uma API REST desenvolvida para o gerenciamento
@@ -37,20 +35,28 @@ código, facilidade de manutenção e rápida criação de APIs REST.
 
 ------------------------------------------------------------------------
 
-# Estrutura Geral do Projeto
+## Estrutura da Aplicação
 
-O projeto segue uma estrutura organizada em camadas:
+A aplicação segue uma arquitetura simples baseada em separação de responsabilidades entre camadas.
 
-GerenciadorEmpreendimentosSc.Api
+```mermaid
+flowchart TD
 
-Controllers → Endpoints da API\
-Models → Entidades de domínio\
-Dtos → Objetos de transferência de dados\
-Data → DbContext e acesso ao banco\
-Migrations → Controle de versionamento do banco\
-Program.cs → Configuração da aplicação
+Client["Cliente / HTTP Request"]
+Controller["Controller (API REST)"]
+DTO["DTOs"]
+Validation["FluentValidation"]
+Model["Modelos de Domínio"]
+DbContext["AppDbContext (Entity Framework Core)"]
+Database["Banco de Dados SQLite"]
 
-Essa separação facilita manutenção, legibilidade e evolução do sistema.
+Client --> Controller
+Controller --> DTO
+Controller --> Validation
+Controller --> Model
+Model --> DbContext
+DbContext --> Database
+```
 
 ### Descrição das camadas
 
@@ -113,7 +119,7 @@ Para executar o projeto é necessário possuir:
 
 ## Clonar o repositório
 
-git clone
+git clone https://github.com/MarceloPV2020/GerenciadorEmpreendimentosSc.git
 
 ## Acessar o diretório do projeto
 
@@ -155,7 +161,7 @@ aplicação caso ainda não exista.
 
 Apresentação da solução desenvolvida:
 
-??????????????????????????????????????????LINK_DO_VIDEO
+LINK????????????????????????????????????????????????????????????????????????????
 
 No vídeo são apresentados:
 
