@@ -12,32 +12,29 @@ public sealed class AppDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         var e = modelBuilder.Entity<Empreendimento>();
-
         e.HasIndex(x => x.Municipio);
         e.HasIndex(x => x.Status);
         e.HasIndex(x => x.Segmento);
-
         base.OnModelCreating(modelBuilder);
     }
 
     public override int SaveChanges()
     {
-        TouchUpdatedAt();
+        UpdateAtualizado();
         return base.SaveChanges();
     }
 
     public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
     {
-        TouchUpdatedAt();
+        UpdateAtualizado();
         return base.SaveChangesAsync(cancellationToken);
     }
 
-    private void TouchUpdatedAt()
+    private void UpdateAtualizado()
     {
-        foreach (var entry in ChangeTracker.Entries<Empreendimento>()
-                     .Where(x => x.State == EntityState.Modified))
+        foreach (var entry in ChangeTracker.Entries<Empreendimento>().Where(x => x.State == EntityState.Modified))
         {
-            entry.Entity.UpdatedAt = DateTimeOffset.UtcNow;
+            entry.Entity.Atualizado = DateTimeOffset.UtcNow;
         }
     }
 }
