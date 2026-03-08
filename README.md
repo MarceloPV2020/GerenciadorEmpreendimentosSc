@@ -37,17 +37,27 @@ código, facilidade de manutenção e rápida criação de APIs REST.
 
 ------------------------------------------------------------------------
 
-# Estrutura Geral do Projeto
+## Estrutura da Aplicação
 
-O projeto está organizado em camadas simples, separando
-responsabilidades entre controle de requisições, transferência de dados,
-modelo de domínio e persistência.
+A aplicação segue uma arquitetura simples baseada em separação de responsabilidades entre camadas.
 
-GerenciadorEmpreendimentosSc.Api │ ├── Controllers │
-EmpreendimentosController.cs │ ├── DTOs │ EmpreendimentoCreateDto.cs │
-EmpreendimentoUpdateDto.cs │ EmpreendimentoReadDto.cs │ ├── Models │
-Empreendimento.cs │ Segmento.cs │ StatusEmpreendimento.cs │ ├── Data │
-AppDbContext.cs │ ├── Program.cs └── README.md
+```mermaid
+flowchart TD
+
+Client["Cliente / HTTP Request"]
+Controller["Controller (API REST)"]
+DTO["DTOs"]
+Validation["FluentValidation"]
+Model["Modelos de Domínio"]
+DbContext["AppDbContext (Entity Framework Core)"]
+Database["Banco de Dados SQLite"]
+
+Client --> Controller
+Controller --> DTO
+Controller --> Validation
+Controller --> Model
+Model --> DbContext
+DbContext --> Database
 
 ### Descrição das camadas
 
