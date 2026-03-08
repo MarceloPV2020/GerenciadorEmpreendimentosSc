@@ -10,6 +10,6 @@ public sealed record EmpreendimentoReadDto(
     Segmento Segmento,
     string Telefone,
     StatusEmpreendimento Status,
-    DateTimeOffset CreatedAt,
-    DateTimeOffset UpdatedAt
+    DateTimeOffset Criado,
+    DateTimeOffset Atualizado
 );
