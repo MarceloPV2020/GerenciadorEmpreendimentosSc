@@ -26,7 +26,7 @@ namespace GerenciadorEmpreendimentosSc.Api.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTimeOffset>("CreatedAt")
+                    b.Property<DateTimeOffset>("Criado")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Municipio")
@@ -55,7 +55,7 @@ namespace GerenciadorEmpreendimentosSc.Api.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTimeOffset>("UpdatedAt")
+                    b.Property<DateTimeOffset>("Atualizado")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");

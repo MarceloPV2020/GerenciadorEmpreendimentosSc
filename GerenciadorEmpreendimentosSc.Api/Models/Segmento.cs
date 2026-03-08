@@ -1,11 +1,10 @@
-﻿namespace GerenciadorEmpreendimentosSc.Api.Models
+﻿namespace GerenciadorEmpreendimentosSc.Api.Models;
+
+public enum Segmento
 {
-    public enum Segmento
-    {
-        Tecnologia = 1,
-        Comercio = 2,
-        Industria = 3,
-        Servicos = 4,
-        Agronegocio = 5
-    }
+    Tecnologia = 1,
+    Comercio = 2,
+    Industria = 3,
+    Servicos = 4,
+    Agronegocio = 5
 }

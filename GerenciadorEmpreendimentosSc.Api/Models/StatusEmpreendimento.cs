@@ -1,8 +1,7 @@
-﻿namespace GerenciadorEmpreendimentosSc.Api.Models
+﻿namespace GerenciadorEmpreendimentosSc.Api.Models;
+
+public enum StatusEmpreendimento
 {
-    public enum StatusEmpreendimento
-    {
-        Ativo = 1,
-        Inativo = 2
-    }
+    Ativo = 1,
+    Inativo = 2
 }
