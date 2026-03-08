@@ -1,3 +1,7 @@
+# Gerenciador de Empreendimentos de Santa Catarina
+
+API REST desenvolvida para gerenciamento de empreendimentos localizados no estado de Santa Catarina.
+
 ## Descrição da Solução
 
 Este projeto consiste em uma API REST desenvolvida para o gerenciamento
@@ -42,17 +46,17 @@ A aplicação segue uma arquitetura simples baseada em separação de responsabi
 ```mermaid
 flowchart TD
 
-Client["Cliente / HTTP Request"]
-Controller["Controller (API REST)"]
+Client["Cliente / Swagger / HTTP Request"]
+Controller["Controllers (API REST)"]
 DTO["DTOs"]
 Validation["FluentValidation"]
 Model["Modelos de Domínio"]
-DbContext["AppDbContext (Entity Framework Core)"]
-Database["Banco de Dados SQLite"]
+DbContext["AppDbContext (EF Core)"]
+Database[("SQLite Database")]
 
 Client --> Controller
 Controller --> DTO
-Controller --> Validation
+DTO --> Validation
 Controller --> Model
 Model --> DbContext
 DbContext --> Database
