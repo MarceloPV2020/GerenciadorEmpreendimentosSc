@@ -123,7 +123,9 @@ Para executar o projeto é necessário possuir:
 
 ## Clonar o repositório
 
+```bash
 git clone https://github.com/MarceloPV2020/GerenciadorEmpreendimentosSc.git
+```
 
 ## Acessar o diretório do projeto
 
